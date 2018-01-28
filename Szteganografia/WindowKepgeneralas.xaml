@@ -1,0 +1,54 @@
+﻿<Window x:Class="Szteganografia.WindowKepgeneralas"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:ed="clr-namespace:Szakdolgozat.Editor;assembly=Szakdolgozat.Editor"
+        Title="Kép generálása" Width="400" Height="400" ResizeMode="NoResize" ShowInTaskbar="False" WindowStartupLocation="CenterScreen" Icon="Images/szteganografia.ico">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto" />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+
+        <Border Grid.Row="0" Grid.ColumnSpan="2" Style="{StaticResource BorderDialogFejlec}">
+            <TextBlock Text="A generálandó kép típusa:" Grid.Row="0" Grid.ColumnSpan="2" Style="{StaticResource TextBlockDialogFejlec}" />
+        </Border>
+
+        <ComboBox Name="ComboBoxKepTipus" SelectedIndex="0" Grid.Row="1" Grid.ColumnSpan="2" Style="{StaticResource ComboBoxTipus}">
+            <ComboBoxItem Content="Mandelbrot halmaz"/>
+            <ComboBoxItem Content="Véletlenszerű Julia halmaz"/>
+            <ComboBoxItem Content="Egyszínű kép"/>
+            <ComboBoxItem Content="Véletlenszerű kép"/>
+        </ComboBox>
+
+        <TextBlock Text="Szélesség min.100 pixel:" Grid.Row="2" Grid.Column="0" Style="{StaticResource TextBlockCimke}" />
+        <ed:TextBoxInt Name="TextBoxPixelWidth" Grid.Row="2" Grid.Column="1" Style="{StaticResource TextBoxSzam}" />
+        <TextBlock Text="Magasság, min.100 pixel:" Grid.Row="3" Grid.Column="0" Style="{StaticResource TextBlockCimke}" />
+        <ed:TextBoxInt Name="TextBoxPixelHeight" Grid.Row="3" Grid.Column="1" Style="{StaticResource TextBoxSzam}" />
+
+        <TextBlock Text="Red:" Grid.Row="4" Grid.Column="0" Style="{StaticResource TextBlockCimke}" />
+        <Slider Name="SliderRed" Minimum="0" Maximum="1" TickFrequency="0.05" TickPlacement="BottomRight" Grid.Row="4" Grid.Column="1" ValueChanged="Slider_ValueChanged" />
+        <TextBlock Text="Green:" Grid.Row="5" Grid.Column="0" Style="{StaticResource TextBlockCimke}" />
+        <Slider Name="SliderGreen" Minimum="0" Maximum="1" TickFrequency="0.05" TickPlacement="BottomRight" Grid.Row="5" Grid.Column="1" ValueChanged="Slider_ValueChanged" />
+        <TextBlock Text="Blue:" Grid.Row="6" Grid.Column="0" Style="{StaticResource TextBlockCimke}" />
+        <Slider Name="SliderBlue" Minimum="0" Maximum="1" TickFrequency="0.05" TickPlacement="BottomRight" Grid.Row="6" Grid.Column="1" ValueChanged="Slider_ValueChanged" />
+        
+        <Rectangle Name="RectangleColor" Height="50" Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="2" Margin="0 8" />
+
+        <StackPanel Grid.Row="8" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Center">
+            <Button Name="ButtonOk" Content="OK" HorizontalAlignment="Center" VerticalAlignment="Center" Width="100" Margin="10" Click="ButtonOk_Click" IsDefault="True" />
+            <Button Name="ButtonCancel" Content="Mégsem" HorizontalAlignment="Center" VerticalAlignment="Center" Width="100" Margin="10" Click="ButtonCancel_Click" IsCancel="True" />
+        </StackPanel>
+    </Grid>
+</Window>

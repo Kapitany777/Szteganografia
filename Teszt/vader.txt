@@ -1,0 +1,59 @@
+Vader és a rendszergazda
+
+Egy reggel TK-456, az Avenger csillagromboló egyik rendszergazdája békésen aludt ágyában. Hirtelen megcsörrent a telefon.
+
+- Vajon ki lehet az ilyen korán, ki nem bír már megint magával? - gondolta bosszúsan, majd felvette a telefont. - Halló, itt az Avenger informatika.
+- Itt Vader beszél - hallatszott a telefonból.
+
+TK-456 kiugrott az ágyból, összecsapta bokáit, majd szabályszerûen jelentkezett:
+
+- Azonosítási számom TK-456, miben segíthetek, Vader nagyúr?
+- Már megint valami baj van a légzõrendszerrel - válaszolta Vader. - Nem a megfelelõ ütemben mûködik.
+- Akkor rögtön megnézem - mondta a rendszergazda.
+- Siessen, nem érek rá, hamarosan felszíni támadást indítunk a lázadók hothi bázisa ellen - hörögte Vader elfúló hangon, amely a légzõrendszer hibájára utalt. - Az az idióta Ozzel admirális már megint hibázott! Nem fog többet flottát parancsnokolni, arról gondoskodtam.
+
+TK-456 kajánul elvigyorodott, ugyanis Ozzel admirális nem tartozott a kedvencei közé. Állandóan megfertõzte a gépét vírusokkal, de úgy néz ki, hogy ezután már nem néz többet vukipornó oldalakat az öreg.
+
+- Igyekszem, nagyúr! Rögtön bejelentkezek a létfenntartó rendszerére.
+
+TK-456 leült a terminálja elé, arrébb söpörte a gyûrött csokipapírokat, így szabaddá téve a billentyûzetet, miközben majdnem felborította a félig teli kávéscsészét. Bekapcsolta a terminált, majd begépelte a következõ parancsot:
+
+ssh main.vader.imp -l vader
+
+Szerencsére Vader épp egy rádiós elérési pont közelében tartózkodott, így rögtön meg is jelent a jelszókérõ prompt.
+
+- Mi is volt a jelszava, nagyúr? - kérdezte TK-456.
+- Amidala - válaszolta Vader.
+- Hát ez nem túl erõs jelszó, uram, meg kellene változtatni - tanácsolta TK-456. - Ezt még egy kezdõ lázadó hacker is feltöri. Ha egyszer ráér, jöjjön be hozzánk az informatikára, szívesen segítünk, és módosítjuk a jelszavát.
+
+TK-456 begépelte a jelszót, majd az impterminal parancs begépelésével elindította a Vader létfenntartó rendszerének karbantartását lehetõvé tevõ parancssori programot.
+
+> show parameters
+
+Erre a következõ választ kapta:
+
+Imperial Medical System V1.02
+...
+breath_rate = 10
+...
+Ready.
+
+- Nem csoda, hogy nem kap levegõt az öreg - gondolta TK-456. - 10-es légzési tempó, ráadásul V1.02-es rendszer, még jó, hogy nem lyukszalagokkal kell felparaméterezni, mint a húsz évvel ezelõtti modelleket.
+
+Ezután a következõ parancsokat gépelte be:
+
+> set breath_rate = 20
+Ready.
+> commit
+Ready.
+
+- Rendben mûködik a légzése, uram? - kérdezte Vadert.
+- Úgy veszem észre, igen - válaszolta a Sötét Nagyúr. - Köszönöm a segítséget, most már indulhatok a csatába.
+- Nagyon szívesen - mondta TK-456. - Ha egyszer ráér, lépjen be hozzánk, és csinálunk egy firmware update-et a létfenntartó rendszerén. Néhány perc az egész.
+- Rendben - válaszolta Vader, majd letette a telefont.
+
+TK-456 kikapcsolta a terminál monitorját, majd visszafeküdt ágyába.
+
+- Milyen jó, hogy nem rohamosztagosnak jelentkeztem, most mehetnék a csatába - gondolta. - Nem hiányzik ez nekem.
+
+Néhány perc múlva már az igazak álmát aludta.

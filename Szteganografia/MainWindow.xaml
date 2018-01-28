@@ -1,0 +1,154 @@
+﻿<Window x:Class="Szteganografia.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Szteganográfia" Width="897" Height="500" WindowState="Maximized"
+        Icon="Images/szteganografia.ico" WindowStyle="SingleBorderWindow">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+
+        <Menu>
+            <MenuItem Header="_File" >
+                <MenuItem Name="MenuItemOpen" Header="Kép betöltése" Click="MenuItemOpen_Click" />
+                <MenuItem Name="MenuItemSave" Header="Kép mentése másként" Click="MenuItemSave_Click" />
+                <Separator />
+                <MenuItem Name="MenuItemOpenText" Header="Szöveg betöltése" Click="MenuItemOpenText_Click" />
+                <Separator />
+                <MenuItem Name="MenuItemExit" Header="_Kilépés a programból" Click="MenuItemExit_Click" />
+            </MenuItem>
+            
+            <MenuItem Header="_Szerkesztés">
+                <MenuItem Command="ApplicationCommands.Undo" />
+                <MenuItem Command="ApplicationCommands.Redo" />
+                <Separator />
+                <MenuItem Command="ApplicationCommands.Cut" />
+                <MenuItem Command="ApplicationCommands.Copy" />
+                <MenuItem Command="ApplicationCommands.Paste" />
+            </MenuItem>
+
+            <MenuItem Header="_Műveletek">
+                <MenuItem Name="MenuItemKepGeneralas" Header="Kép generálása" Click="MenuItemKepGeneralas_Click" />
+                <Separator />
+                <MenuItem Name="MenuItemAdatRejtes" Header="A szöveg elrejtése a képben" Click="MenuItemAdatRejtes_Click" />
+                <MenuItem Name="MenuItemVisszafejtes" Header="Szöveg visszafejtése a képből" Click="MenuItemVisszafejtes_Click" />
+            </MenuItem>
+
+            <MenuItem Header="_Help">
+                <MenuItem Name="MenuItemProgramrol" Header="A programról" Click="MenuItemProgramrol_Click" />
+            </MenuItem>
+        </Menu>
+
+        <ToolBarTray Grid.Row="1">
+            <ToolBar>
+                <Button ToolTip="Kép betöltése" Click="MenuItemOpen_Click">
+                    <Image Source="Images/picture_empty.png" Width="24" />
+                </Button>
+                <Button ToolTip="Kép mentése másként" Click="MenuItemSave_Click">
+                    <Image Source="Images/picture_save.png" Width="24" />
+                </Button>
+                
+                <Separator />
+                
+                <Button ToolTip="Szöveg betöltése" Click="MenuItemOpenText_Click">
+                    <Image Source="Images/book_open.png" Width="24" />
+                </Button>
+            
+                <Separator />
+                
+                <Button ToolTip="Kép generálása" Click="MenuItemKepGeneralas_Click">
+                    <Image Source="Images/picture_add.png" Width="24" />
+                </Button>
+
+                <Separator />
+
+                <Button ToolTip="A szöveg elrejtése a képben" Click="MenuItemAdatRejtes_Click">
+                    <Image Source="Images/picture_edit.png" Width="24" />
+                </Button>
+
+                <Button ToolTip="Szöveg visszafejtése a képből" Click="MenuItemVisszafejtes_Click">
+                    <Image Source="Images/picture_key.png" Width="24" />
+                </Button>
+
+                <Separator />
+
+                <Button ToolTip="A programról" Click="MenuItemProgramrol_Click">
+                    <Image Source="Images/application_home.png" Width="24" />
+                </Button>
+            </ToolBar>
+        </ToolBarTray>
+        
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto" />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+
+            <StackPanel Grid.Column="0">
+                <Border Style="{StaticResource BorderFejlec}">
+                    <TextBlock Text="A kép" Style="{StaticResource TextBlockFejlec}" />
+                </Border>
+                
+                <Border Name="BorderImagaData" BorderBrush="LightGray" BorderThickness="4" CornerRadius="4" Margin="5" Padding="5" Width="500">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                        </Grid.RowDefinitions>
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto" />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock Text="Fájlnév:" Grid.Row="0" Grid.Column="0" Style="{StaticResource TextBlockCimke}" />
+                        <TextBlock Name="TextBlockFilenev" TextWrapping="Wrap" Grid.Row="0" Grid.Column="1" Style="{StaticResource TextBlockAdat}" />
+
+                        <TextBlock Text="Szélesség:" Grid.Row="1" Grid.Column="0" Style="{StaticResource TextBlockCimke}" />
+                        <TextBlock Text="{Binding Path=PixelWidth}" Grid.Row="1" Grid.Column="1" Style="{StaticResource TextBlockAdat}" />
+
+                        <TextBlock Text="Magasság:" Grid.Row="2" Grid.Column="0" Style="{StaticResource TextBlockCimke}" />
+                        <TextBlock Text="{Binding Path=PixelHeight}" Grid.Row="2" Grid.Column="1" Style="{StaticResource TextBlockAdat}" />
+                    </Grid>
+                </Border>
+
+                <Border Name="BorderImage" BorderBrush="LightGray" BorderThickness="4" CornerRadius="4" Margin="5" Padding="5" Width="500">
+                    <Image Name="ImageStego" />
+                </Border>
+
+            </StackPanel>
+
+            <StackPanel Grid.Column="1" VerticalAlignment="Stretch">
+                <Border Style="{StaticResource BorderFejlec}">
+                    <TextBlock Text="Az elrejtendő szöveg" Style="{StaticResource TextBlockFejlec}" />
+                </Border>
+
+                <TextBox Name="TextBoxPlainText" Height="150" Style="{StaticResource TextBoxTobbsorosSzoveg}" />
+
+                <Border Style="{StaticResource BorderFejlec}">
+                    <TextBlock Text="A titkosítás beállításai" Style="{StaticResource TextBlockFejlec}" />
+                </Border>
+                
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="A kiválasztott titkosító algoritmus:" Style="{StaticResource TextBlockCimke}" />
+
+                    <ComboBox Name="ComboBoxTitkositoTipus" SelectedIndex="0" Style="{StaticResource ComboBoxTipus}">
+                        <ComboBoxItem Content="Nincs titkosítás"/>
+                        <ComboBoxItem Content="Caesar titkosítás"/>
+                        <ComboBoxItem Content="Titkosítás 10 pozícióval történő eltolással"/>
+                        <ComboBoxItem Content="Vigenère titkosítás"/>
+                    </ComboBox>
+                </StackPanel>
+
+                <Border Style="{StaticResource BorderFejlec}">
+                    <TextBlock Text="A visszafejtett szöveg" Style="{StaticResource TextBlockFejlec}" />
+                </Border>
+
+                <TextBox Name="TextBoxVisszafejtett" Height="150" IsReadOnly="True" Style="{StaticResource TextBoxTobbsorosSzoveg}" />
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Window>
